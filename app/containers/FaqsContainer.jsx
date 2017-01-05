@@ -1,48 +1,46 @@
 import React from 'react'
-// import fetch helper function from lib
+import { connect } from 'react-redux'
+import { fetchFaqs, fetchFaqsIfNeeded } from '../state/actions/faqActions'
+import constants from '../lib/constants.js'
 
-export default class FaqsContainer extends React.Component {
+class Faqs extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-     dataReady: true,
-     faqs: []
-    }
+    // this.state = {
+    //  dataReady: true,
+    //  faqs: []
+    // }
   }
 
   componentDidMount() {
-    const url = 'https://api.realist.cloud/faqs'
-    this.setState({dataReady: false })
-    fetch(url, {
-      method: 'GET'
-    })
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        dataReady: true,
-        faqs: data.faqs
-       })
-      console.log('data: ', this.state.faqs)
-    })
-    .catch(function(err) {
-     console.log('fetch error: ', err)
-    })
+    this.props.dispatch(fetchFaqs(constants.faqsApi))
   }
 
   render () {
+    console.log('dispatch faqs: ', this.props.faqs);
     return (
-      this.state.dataReady ?
-        <div>Data Ready</div>
-      :
+      this.props.isFetchingFaqs ?
         <div>Loading...</div>
+      :
+        <div>Data Ready</div>
     )
   }
 }
 
-// FaqsContainer.propTypes = {
-//   dataReady: React.PropTypes.bool
-// }
-//
-// FaqsContainer.defaultProps = {
-//   dataReady: false
-// }
+const mapStateToProps = state => {
+  return {
+    isFetchingFaqs: state.isFetchingFaqs,
+    faqs: state.faqs
+  }
+}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     handleFetchFaqs: api => dispatch(fetchFaqsIfNeeded(api))
+//   }
+// } , mapDispatchToProps
+
+const FaqsContainer = connect(
+  mapStateToProps
+)(Faqs)
+
+export default FaqsContainer

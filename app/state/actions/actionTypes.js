@@ -1,1 +1,3 @@
-export const LOAD_FAQS = 'LOAD_FAQS'
+export const
+  REQUEST_FAQS = 'REQUEST_FAQS',
+  RECEIVE_FAQS = 'RECEIVE_FAQS'
