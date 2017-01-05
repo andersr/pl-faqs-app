@@ -1,12 +1,11 @@
 const webpack = require('webpack')
 const validate = require('webpack-validator')
 const merge = require('webpack-merge')
-const PATHS = require('./config/paths')
-const webpack_parts = require('./webpack/parts')
+const PATHS = require('../config/paths')
+const webpack_parts = require('./parts')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const staticContent = require(PATHS.staticContent)
 
-// entry: ['whatwg-fetch', ...]
 const common = {
   context: PATHS.app,
   entry: ['whatwg-fetch','./main.js'],
