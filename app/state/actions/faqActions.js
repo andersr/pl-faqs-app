@@ -25,15 +25,15 @@ function requestFaqs() {
   }
 }
 
-function receiveFaqs(faqs) {
+function receiveFaqs(data) {
   return {
     type: types.RECEIVE_FAQS,
-    faqs
+    data
   }
 }
 
 function shouldFetchFaqs(state) {
-  const faqs = state.faqState
+  const faqs = state.faqs
   if (faqs.isFetchingFaqs) {
     return false
   } else if (faqs.length === 0) {

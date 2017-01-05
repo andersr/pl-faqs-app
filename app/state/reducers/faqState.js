@@ -2,10 +2,10 @@ import * as types from '../actions/actionTypes'
 
 const initialState = {
   isFetchingFaqs: false,
-  faqs: []
+  data: []
 }
 
-const faqState = (state = initialState, action) => {
+const faqs = (state = initialState, action) => {
   switch (action.type) {
     case types.REQUEST_FAQS:
       return  {
@@ -16,7 +16,7 @@ const faqState = (state = initialState, action) => {
       return  {
         ...state,
         isFetchingFaqs: false,
-        faqs: action.faqs
+        data: action.data
       }
     default:
       return state
@@ -24,4 +24,4 @@ const faqState = (state = initialState, action) => {
 }
 
 
-export default faqState
+export default faqs

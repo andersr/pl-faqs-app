@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import faqState from './faqState'
+import faqs from './faqState'
 
 const rootReducer = combineReducers({
-  faqState
+  faqs
 })
 
 export default rootReducer

@@ -13,12 +13,13 @@ class Faqs extends React.Component {
     // }
   }
 
-  componentDidMount() {
-    this.props.dispatch(fetchFaqs(constants.faqsApi))
+  componentWillReceiveProps(nextProps) {
+   if (nextProps.faqs.length === 0) {
+     this.props.dispatch(fetchFaqs(constants.faqsApi))
+   }
   }
 
   render () {
-    // console.log('dispatch faqs: ', this.props.faqs);
     return (
       this.props.isFetchingFaqs ?
         <div>Loading...</div>
@@ -30,15 +31,10 @@ class Faqs extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isFetchingFaqs: state.faqState.isFetchingFaqs,
-    faqs: state.faqState.faqs
+    isFetchingFaqs: state.faqs.isFetchingFaqs,
+    faqs: state.faqs.data
   }
 }
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     handleFetchFaqs: api => dispatch(fetchFaqsIfNeeded(api))
-//   }
-// } , mapDispatchToProps
 
 const FaqsContainer = connect(
   mapStateToProps
