@@ -1,31 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchFaqs, fetchFaqsIfNeeded } from '../state/actions/faqActions'
-import constants from '../lib/constants'
-import FaqsList from '../components/FaqsList'
+import FaqsView from '../components/FaqsView'
 
-class Faqs extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
-  componentWillReceiveProps(nextProps) {
-   if (nextProps.faqs.length === 0) {
-     this.props.dispatch(fetchFaqs(constants.faqsApi))
-   }
-  }
-
-  render () {
-    return (
-      this.props.isFetchingFaqs ?
-        <div>Loading...</div>
-      :
-        <div><FaqsList faqs={this.props.faqs} /></div>
-    )
-  }
-}
-
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     isFetchingFaqs: state.faqs.isFetchingFaqs,
     faqs: state.faqs.data
@@ -34,6 +12,6 @@ const mapStateToProps = state => {
 
 const FaqsContainer = connect(
   mapStateToProps
-)(Faqs)
+)(FaqsView)
 
 export default FaqsContainer
