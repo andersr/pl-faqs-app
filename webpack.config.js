@@ -6,9 +6,10 @@ const webpack_parts = require('./webpack/parts')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const staticContent = require(PATHS.staticContent)
 
+// entry: ['whatwg-fetch', ...]
 const common = {
   context: PATHS.app,
-  entry: ['./main.js'],
+  entry: ['whatwg-fetch','./main.js'],
   output: {
     path: PATHS.build,
     filename: '[name].js'

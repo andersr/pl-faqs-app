@@ -8,10 +8,16 @@ class FaqsView extends React.Component {
     super(props)
   }
 
+  componentWillMount() {
+    const { dispatch, faqs, faqsApi } = this.props
+    if (this.props.faqs.length === 0) {
+      this.props.dispatch(fetchFaqs(this.props.faqsApi))
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
-    const { dispatch, faqsApi } = this.props
     if (nextProps.faqs.length === 0) {
-      dispatch(fetchFaqs(faqsApi))
+      this.props.dispatch(fetchFaqs(this.props.faqsApi))
     }
   }
 
