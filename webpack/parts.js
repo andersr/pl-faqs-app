@@ -17,19 +17,6 @@ exports.devServer = function(options) {
   };
 }
 
-exports.indexTemplate = function (options) {
-  return {
-    plugins: [
-      new HtmlWebpackPlugin({
-        title: options.title,
-        template: options.template,
-        inject: 'body',
-        filename: 'index.html'
-      })
-    ]
-  }
-}
-
 exports.loadJSX = function (paths) {
   return {
     module: {
