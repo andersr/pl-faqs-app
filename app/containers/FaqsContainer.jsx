@@ -32,7 +32,7 @@ export default class FaqsContainer extends React.Component {
   render () {
     return (
       this.state.dataReady ?
-        <div>{this.state.faqs[0].question}</div>
+        <div>Data Ready</div>
       :
         <div>Loading...</div>
     )
