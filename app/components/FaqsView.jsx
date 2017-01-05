@@ -1,6 +1,7 @@
 import React from 'react'
-import Heading from '../components/Heading'
-import FaqsList from '../components/FaqsList'
+import Heading from './Heading'
+import FaqsList from './FaqsList'
+import Spinner from './Spinner'
 import { fetchFaqs } from '../state/actions/faqActions'
 
 class FaqsView extends React.Component {
@@ -27,7 +28,7 @@ class FaqsView extends React.Component {
       <div className="container">
         <Heading text={headingText} />
         {  isFetchingFaqs ?
-            <div>Loading...</div>
+            <Spinner />
           :
             <FaqsList faqs={faqs} />
         }
