@@ -1,11 +1,12 @@
 import React from 'react'
+import { Accordion, Panel } from 'react-bootstrap'
 
 const FaqsList = ({ faqs }) =>(
-  <ul>{
+  <Accordion>{
     faqs.map((faq, index) => {
-      return <li key={index}><h2>{faq.question}</h2><p>{faq.answer}</p></li>
+      return <Panel key={index} header={faq.question} eventKey={index}>{faq.answer}</Panel>
     })
-  }</ul>
+  }</Accordion>
 )
 
 export default FaqsList
