@@ -2,9 +2,7 @@ import * as types from './actionTypes'
 
 export function fetchFaqs(api) {
   return dispatch => {
-
     dispatch(requestFaqs(api))
-
     return fetch(api, {
       method: 'GET'
     })
