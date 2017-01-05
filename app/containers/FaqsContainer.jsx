@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchFaqs, fetchFaqsIfNeeded } from '../state/actions/faqActions'
 import FaqsView from '../components/FaqsView'
 
 const mapStateToProps = (state, ownProps) => {

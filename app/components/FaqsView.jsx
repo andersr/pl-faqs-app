@@ -1,6 +1,7 @@
 import React from 'react'
 import Heading from '../components/Heading'
 import FaqsList from '../components/FaqsList'
+import { fetchFaqs } from '../state/actions/faqActions'
 
 class FaqsView extends React.Component {
   constructor (props) {
