@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Heading = ({level, text}) => React.createElement(`h${level}`, {className: "helper-full-width helper-centered" }, text)
+const Heading = ({level, text}) => React.createElement(`h${level}`, null, text)
 
 Heading.propTypes = {
   text:    React.PropTypes.string.isRequired,
