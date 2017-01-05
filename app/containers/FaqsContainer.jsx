@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchFaqs, fetchFaqsIfNeeded } from '../state/actions/faqActions'
 import constants from '../lib/constants.js'
+import List from '../components/List'
 
 class Faqs extends React.Component {
   constructor (props) {
@@ -17,20 +18,20 @@ class Faqs extends React.Component {
   }
 
   render () {
-    console.log('dispatch faqs: ', this.props.faqs);
+    // console.log('dispatch faqs: ', this.props.faqs);
     return (
       this.props.isFetchingFaqs ?
         <div>Loading...</div>
       :
-        <div>Data Ready</div>
+        <div><List listItems={this.props.faqs} /></div>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    isFetchingFaqs: state.isFetchingFaqs,
-    faqs: state.faqs
+    isFetchingFaqs: state.faqState.isFetchingFaqs,
+    faqs: state.faqState.faqs
   }
 }
 // const mapDispatchToProps = dispatch => {
