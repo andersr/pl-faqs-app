@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchFaqs, fetchFaqsIfNeeded } from '../state/actions/faqActions'
 import constants from '../lib/constants'
-import FaqsList from '../components/List'
-// import FaqListItem from '../components/FaqListItem'
+import FaqsList from '../components/FaqsList'
 
 class Faqs extends React.Component {
   constructor (props) {
