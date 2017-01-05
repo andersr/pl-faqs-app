@@ -1,3 +1,4 @@
 module.exports = {
-  appTitle: 'FAQs App'
+  appTitle: 'FAQs App',
+  faqsHeader: 'PocketList FAQs'
 }
