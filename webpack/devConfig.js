@@ -33,6 +33,7 @@ const config = merge(
     }
   },
   webpack_parts.loadJSX(PATHS.app),
+  webpack_parts.loadJson(PATHS.app),
   webpack_parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT

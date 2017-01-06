@@ -30,3 +30,14 @@ exports.loadJSX = function (paths) {
     }
   }
 }
+
+exports.loadJson = function (paths) {
+  return {
+    module: {
+      loaders: [{
+        test: /\.json$/,
+        loader: 'json'
+      }]
+    }
+  }
+}
