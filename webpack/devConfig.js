@@ -11,7 +11,7 @@ const common = {
   entry: ['whatwg-fetch','./main.js'],
   output: {
     path: PATHS.build,
-    filename: '[name].js'
+    filename: 'bundle.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
