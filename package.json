@@ -3,7 +3,6 @@
   "author": "Anders Ramsay",
   "version": "1.0.0",
   "description": "Fetch and display a list of FAQs",
-  "main": "app/main.js",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --config ./webpack/devConfig"
