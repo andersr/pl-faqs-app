@@ -5,8 +5,7 @@
   "description": "Fetch and display a list of FAQs",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/devConfig",
-    "dev": "node devServer"
+    "start": "node devServer"
   },
   "keywords": [],
   "license": "ISC",
