@@ -9,32 +9,43 @@ class FaqsView extends React.Component {
     super(props)
   }
 
-  componentWillMount() {
-    const { dispatch, faqs, faqsApi } = this.props
-    if (this.props.faqs.length === 0) {
-      this.props.dispatch(fetchFaqs(this.props.faqsApi))
-    }
+  componentDidMount() {
+    this.props.requestFaqs()
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.faqs.length === 0) {
-      this.props.dispatch(fetchFaqs(this.props.faqsApi))
-    }
+  componentWillMount() {
+    // const { dispatch, faqs, faqsApi } = this.props
+    // if (this.props.faqs.length === 0) {
+    //   this.props.dispatch(fetchFaqs(this.props.faqsApi))
+    // }
+  }
+
+  componentWillReceiveProps() {
+    // if (nextProps.faqs.length === 0) {
+    //   this.props.dispatch(fetchFaqs(this.props.faqsApi))
+    // }
   }
 
   render () {
     const { headingText, isFetchingFaqs, faqs } = this.props
     return (
-      <div className="container">
-        <Heading text={headingText} />
-        {  isFetchingFaqs ?
-            <Spinner />
-          :
-            <FaqsList faqs={faqs} />
-        }
+      <div className="container"><Heading text={headingText} />
+      {  isFetchingFaqs ?
+         <Spinner />
+         :
+         <FaqsList faqs={faqs} />
+      }
       </div>
     )
   }
 }
 
 export default FaqsView
+
+
+// <Heading text={headingText} />
+// {  isFetchingFaqs ?
+//     <Spinner />
+//   :
+//     <FaqsList faqs={faqs} />
+// }

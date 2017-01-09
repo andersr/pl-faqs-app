@@ -1,3 +1,4 @@
-export default {
-  faqsApi: 'https://api.realist.cloud/faqs'
-}
+// export {
+//   faqsApi: 'https://api.realist.cloud/faqs',
+//   faqsPath: 'faqs'
+// }
