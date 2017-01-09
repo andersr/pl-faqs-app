@@ -15,11 +15,22 @@ import FaqsContainer from './containers/FaqsContainer'
 import constants from './lib/constants'
 const staticContent = require('./lib/staticContent')
 
+// DEV TOOLS
+import createLogger from 'redux-logger'
+const logger = createLogger()
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+import { persistStore, autoRehydrate } from 'redux-persist'
+
 const store = createStore(
   rootReducer,
-  applyMiddleware(sagaMiddleware)
+   composeEnhancers(
+    applyMiddleware(sagaMiddleware, logger)
+  ),
+   autoRehydrate()
 )
 sagaMiddleware.run(watchForloadFaqs)
+persistStore(store)
 
 render(
   <Provider store={store}>

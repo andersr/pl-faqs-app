@@ -13,17 +13,10 @@ class FaqsView extends React.Component {
     this.props.requestFaqs()
   }
 
-  componentWillMount() {
-    // const { dispatch, faqs, faqsApi } = this.props
-    // if (this.props.faqs.length === 0) {
-    //   this.props.dispatch(fetchFaqs(this.props.faqsApi))
-    // }
-  }
-
-  componentWillReceiveProps() {
-    // if (nextProps.faqs.length === 0) {
-    //   this.props.dispatch(fetchFaqs(this.props.faqsApi))
-    // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.faqs.length === 0) {
+      this.props.requestFaqs()
+    }
   }
 
   render () {
@@ -41,11 +34,3 @@ class FaqsView extends React.Component {
 }
 
 export default FaqsView
-
-
-// <Heading text={headingText} />
-// {  isFetchingFaqs ?
-//     <Spinner />
-//   :
-//     <FaqsList faqs={faqs} />
-// }
