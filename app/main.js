@@ -1,7 +1,8 @@
 import "babel-polyfill"
 
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
+const { AppContainer } = require('react-hot-loader')
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -33,13 +34,30 @@ sagaMiddleware.run(watchForloadFaqs)
 persistStore(store)
 
 render(
+  <AppContainer>
   <Provider store={store}>
     <FaqsContainer faqsApi={constants.faqsApi} headingText={staticContent.faqsHeader} />
-  </Provider>,
+  </Provider>
+  </AppContainer>,
   document.getElementById('root')
 )
 
+if (module.hot) {
+  module.hot.accept('./containers/FaqsContainer', () => {
+    // If we receive a HMR request for our App container, then reload it using require (we can't do this dynamically with import)
+    const NextApp = require('./containers/FaqsContainer').default;
 
+    // And render it into the root element again
+    render(
+      <AppContainer>
+      <Provider store={store}>
+        <NextApp faqsApi={constants.faqsApi} headingText={staticContent.faqsHeader} />
+      </Provider>
+      </AppContainer>,
+        document.getElementById('root')
+    );
+  })
+}
 
 // import { persistStore, autoRehydrate } from 'redux-persist'
 

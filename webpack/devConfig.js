@@ -8,14 +8,16 @@ const staticContent = require(PATHS.staticContent)
 
 const common = {
   context: PATHS.app,
-  entry: [ 'webpack-hot-middleware/client',
+  entry: [  'react-hot-loader/patch',
+            'webpack-dev-server/client?http://localhost:3000',
+            'webpack/hot/only-dev-server',
            'whatwg-fetch',
            './main.js'
          ],
   output: {
     path: PATHS.build,
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
